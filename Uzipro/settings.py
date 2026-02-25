@@ -152,7 +152,7 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 if ENVIRONMENT == 'production':
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
