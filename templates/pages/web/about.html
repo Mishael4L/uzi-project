@@ -1,0 +1,164 @@
+{% extends 'assets/base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- Hero Start -->
+    <div class="container-fluid pb-5 bg-primary hero-header">
+        <div class="container py-5">
+            <div class="row g-3 align-items-center">
+                <div class="col-lg-6 text-center text-lg-start">
+                    <h1 class="display-1 mb-0 animated slideInLeft">About</h1>
+                </div>
+                <div class="col-lg-6 animated slideInRight">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb justify-content-center justify-content-lg-end mb-0">
+                            <li class="breadcrumb-item"><a class="text-primary" href="{% url 'landing' %}">Home</a></li>
+                            <li class="breadcrumb-item"><a class="text-primary" href="#!">Pages</a></li>
+                            <li class="breadcrumb-item text-secondary active" aria-current="page">About</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Hero End -->
+
+
+    <!-- About Start -->
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-lg-6">
+                    <div class="row">
+                        <div class="col-6 wow fadeIn" data-wow-delay="0.1s">
+                            <img class="img-fluid" src="{{ about_img1.url }}" alt="">
+                        </div>
+                        <div class="col-6 wow fadeIn" data-wow-delay="0.3s">
+                            <img class="img-fluid h-75" src="{{ about_img2.url }}" alt="">
+                            <div class="h-25 d-flex align-items-center text-center bg-primary px-4">
+                                <h4 class="text-white lh-base mb-0">Award Winning Studio Since 1990</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
+                    <h1 class="mb-5"><span class="text-uppercase text-primary bg-light px-2">History</span> of Our
+                        Creation</h1>
+                    <p class="mb-4">{{ history }}</p>
+                    <div class="row g-3">
+                        <div class="col-sm-6">
+                            <h6 class="mb-3"><i class="fa fa-check text-primary me-2"></i>Award Winning</h6>
+                            <h6 class="mb-0"><i class="fa fa-check text-primary me-2"></i>Professional Staff</h6>
+                        </div>
+                        <div class="col-sm-6">
+                            <h6 class="mb-3"><i class="fa fa-check text-primary me-2"></i>24/7 Support</h6>
+                            <h6 class="mb-0"><i class="fa fa-check text-primary me-2"></i>Fair Prices</h6>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center mt-5">
+                        <a class="btn btn-primary px-4 me-2" href="{% url 'about' %}">Read More</a>
+                        {% for link in social_links %}
+                        <a class="btn btn-outline-primary btn-square border-2 me-2" href="{{ link.url }}"><i
+                                class="{{ link.icon_class }}"></i></a>
+                        {% endfor %}
+                        {% comment %} <a class="btn btn-outline-primary btn-square border-2 me-2" href="#!"><i
+                                class="fab fa-twitter"></i></a>
+                        <a class="btn btn-outline-primary btn-square border-2 me-2" href="#!"><i
+                                class="fab fa-instagram"></i></a>
+                        <a class="btn btn-outline-primary btn-square border-2" href="#!"><i
+                                class="fab fa-linkedin-in"></i></a>
+                    </div> {% endcomment %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About End -->
+
+
+    <!-- Team Start -->
+    <div class="container-fluid bg-light py-5">
+        <div class="container py-5">
+            <h1 class="mb-5">Our Professional <span class="text-uppercase text-primary bg-light px-2">Designers</span>
+            </h1>
+            <div class="row g-4">
+                {% for t in team %}
+                <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.1s">
+                    <div class="team-item position-relative overflow-hidden">
+                        <img class="img-fluid w-100" src="{{ t.team_img.url }}" alt="">
+                        <div class="team-overlay">
+                            <small class="mb-2">{{ t.profession }}</small>
+                            <h4 class="lh-base text-light">{{ t.name }}</h4>
+                            <div class="d-flex justify-content-center">
+                                <a class="btn btn-outline-primary btn-sm-square border-2 me-2" href="{{ t.fb }}">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a class="btn btn-outline-primary btn-sm-square border-2 me-2" href="{{ t.x }}">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a class="btn btn-outline-primary btn-sm-square border-2 me-2" href="{{ t.ig }}">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a class="btn btn-outline-primary btn-sm-square border-2 me-2" href="{{ t.ln }}">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                
+            </div>
+        </div>
+    </div>
+    <!-- Team End -->
+
+
+    <!-- Feature Start -->
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+            <div class="text-center wow fadeIn" data-wow-delay="0.1s">
+                <h1 class="mb-5">Why People <span class="text-uppercase text-primary bg-light px-2">Choose Us</span>
+                </h1>
+            </div>
+            <div class="row g-5 align-items-center text-center">
+                {% for c in chooseus %}
+                <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.1s">
+                    <i class="{{ c.icon_class }}"></i>
+                    <h4>{{ c.reason }}</h4>
+                    <p class="mb-0">{{ c.reason_text }}</p>
+                </div>
+                {% endfor %}
+                
+            </div>
+        </div>
+    </div>
+    <!-- Feature End -->
+
+
+    <!-- Newsletter Start -->
+    <div class="container-fluid bg-primary newsletter p-0">
+        <div class="container p-0">
+            <div class="row g-0 align-items-center">
+                <div class="col-md-5 ps-lg-0 text-start wow fadeIn" data-wow-delay="0.2s">
+                    <img class="img-fluid w-100" src="{{ newsletter_img.url }}" alt="">
+                </div>
+                <div class="col-md-7 py-5 newsletter-text wow fadeIn" data-wow-delay="0.5s">
+                    <div class="p-5">
+                        <h1 class="mb-5">Subscribe the <span
+                                class="text-uppercase text-primary bg-white px-2">Newsletter</span></h1>
+                        <div class="position-relative w-100 mb-2">
+                            <input class="form-control border-0 w-100 ps-4 pe-5" type="text"
+                                placeholder="Enter Your Email" style="height: 60px;">
+                            <button type="button" class="btn shadow-none position-absolute top-0 end-0 mt-2 me-2"><i
+                                    class="fa fa-paper-plane text-primary fs-4"></i></button>
+                        </div>
+                        <p class="mb-0">We look forward to your message/letter, Thank you.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Newsletter End -->
+
+
+{% endblock %}

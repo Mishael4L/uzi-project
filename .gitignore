@@ -1,0 +1,44 @@
+# Uzipro/.env
+
+# Uzivirt
+
+
+
+# PYTHON
+*.pyc
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+Uzivirt/
+*.egg-info/
+dist/
+build/
+
+# DJANGO
+*.log
+db.sqlite3
+db.sqlite3-journal
+/staticfiles/
+/media/
+
+# ENVIRONMENT VARIABLES
+.env
+.env.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# TEMPLATE
+iStudio-1.0.0

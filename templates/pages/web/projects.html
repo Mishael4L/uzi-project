@@ -1,0 +1,117 @@
+{% extends 'assets/base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- Hero Start -->
+    <div class="container-fluid pb-5 bg-primary hero-header">
+        <div class="container py-5">
+            <div class="row g-3 align-items-center">
+                <div class="col-lg-6 text-center text-lg-start">
+                    <h1 class="display-1 mb-0 animated slideInLeft">Projects</h1>
+                </div>
+                <div class="col-lg-6 animated slideInRight">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb justify-content-center justify-content-lg-end mb-0">
+                            <li class="breadcrumb-item"><a class="text-primary" href="{% url 'landing' %}">Home</a></li>
+                            <li class="breadcrumb-item"><a class="text-primary" href="#!">Pages</a></li>
+                            <li class="breadcrumb-item text-secondary active" aria-current="page">Projects</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Hero End -->
+
+
+    <!-- Project Start -->
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+            <div class="row g-0">
+                <div class="col-lg-5 wow fadeIn" data-wow-delay="0.1s">
+                    <div class="d-flex flex-column justify-content-center bg-primary h-100 p-5">
+                        <h1 class="text-white mb-5">Our Latest <span
+                                class="text-uppercase text-primary bg-light px-2">Projects</span></h1>
+                        <h4 class="text-white mb-0"><span class="display-1">6</span> of our latest projects</h4>
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <div class="row g-0">
+                        {% for p in project %}
+                        <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.2s">
+                            <div class="project-item position-relative overflow-hidden">
+                                <img class="img-fluid w-100" src="{{ p.img.url }}" alt="">
+                                <a class="project-overlay text-decoration-none" href="#!">
+                                    <h4 class="text-white">{{ p.name_of_project }}</h4>
+                                    <small class="text-white">{{ p.number_of_project }}</small>
+                                </a>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Project End -->
+
+
+    <!-- Testimonial Start -->
+    <div class="container-xxl pb-5">
+        <div class="container pb-5">
+            <div class="row justify-content-center">
+                <div class="col-md-12 col-lg-9">
+                    <div class="owl-carousel testimonial-carousel wow fadeIn" data-wow-delay="0.2s">
+                        {% for tl in testimonial %}
+                        <div class="testimonial-item">
+                            <div class="row g-5 align-items-center">
+                                <div class="col-md-6">
+                                    <div class="testimonial-img">
+                                        <img class="img-fluid" src="{{ tl.img.url }}" alt="">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="testimonial-text pb-5 pb-md-0">
+                                        <h3>{{ tl.testimony }}</h3>
+                                        <p>{{ tl.testimony_text }}</p>
+                                        <h5 class="mb-0">{{ tl.name }}</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Testimonial End -->
+
+
+    <!-- Newsletter Start -->
+    <div class="container-fluid bg-primary newsletter p-0">
+        <div class="container p-0">
+            <div class="row g-0 align-items-center">
+                <div class="col-md-5 ps-lg-0 text-start wow fadeIn" data-wow-delay="0.2s">
+                    <img class="img-fluid w-100" src="{{ newsletter_img.url }}" alt="">
+                </div>
+                <div class="col-md-7 py-5 newsletter-text wow fadeIn" data-wow-delay="0.5s">
+                    <div class="p-5">
+                        <h1 class="mb-5">Subscribe the <span
+                                class="text-uppercase text-primary bg-white px-2">Newsletter</span></h1>
+                        <div class="position-relative w-100 mb-2">
+                            <input class="form-control border-0 w-100 ps-4 pe-5" type="text"
+                                placeholder="Enter Your Email" style="height: 60px;">
+                            <button type="button" class="btn shadow-none position-absolute top-0 end-0 mt-2 me-2"><i
+                                    class="fa fa-paper-plane text-primary fs-4"></i></button>
+                        </div>
+                        <p class="mb-0">We look forward to your message/letter, Thank you.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Newsletter End -->
+
+
+{% endblock %}
