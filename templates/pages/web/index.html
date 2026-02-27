@@ -14,9 +14,9 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="owl-carousel header-carousel animated fadeIn">
-                        {{ image }}
+                        {% comment %} {{ image }}
                         {{ image.hero_img1 }}
-                        {{ image.hero_img1.url }}
+                        {{ image.hero_img1.url }} {% endcomment %}
                         <img class="img-fluid" src="{{ hero_img1.url }}" alt="">
                         <img class="img-fluid" src="{{ hero_img2.url }}" alt="">
                         <img class="img-fluid" src="{{ hero_img3.url }}" alt="">
