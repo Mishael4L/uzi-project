@@ -42,7 +42,7 @@ def register_user(request):
             # sending my verifcation mail
             base = Base.objects.first()
             subject = 'Welcome! Please, verify your email'
-            message = render_to_string('pages/auth/email-verification.html', {
+            message = render_to_string('pages/auth/email_verification.html', {
                 'user': user, 
                 'verification_link' : verification_link,
                 'site_name' : current_site.name,
