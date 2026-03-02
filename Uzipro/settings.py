@@ -49,7 +49,10 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'cloudinary_storage',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'cloudinary',
     'Uziapp',
     'authapp',
     'crispy_forms',
@@ -154,8 +157,12 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 if ENVIRONMENT == 'production':
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+
+if ENVIRONMENT == 'production':
+    DEFAULT_FILE_STOTRAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+else:
+    MEDIA_URL = '/media/'
+    MEDIA_ROOT = BASE_DIR / 'media'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -207,4 +214,11 @@ LOGGING = {
             'propagate': False,
         },
     },
+}
+
+import cloudinary
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME' : env('CLOUDINARY_CLOUD_NAME'),
+    'API_KEY' : env('CLOUDINARY_API_KEY'),
+    'API_SECRET' : env('CLOUDINARY_API_SECRET'),
 }
