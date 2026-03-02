@@ -156,10 +156,7 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 if ENVIRONMENT == 'production':
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
-
-
-if ENVIRONMENT == 'production':
-    DEFAULT_FILE_STOTRAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+    DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 else:
     MEDIA_URL = '/media/'
     MEDIA_ROOT = BASE_DIR / 'media'
@@ -216,7 +213,6 @@ LOGGING = {
     },
 }
 
-import cloudinary
 CLOUDINARY_STORAGE = {
     'CLOUD_NAME' : env('CLOUDINARY_CLOUD_NAME'),
     'API_KEY' : env('CLOUDINARY_API_KEY'),
