@@ -61,7 +61,7 @@ def register_user(request):
             #     email.send(fail_silently=False)
 
             messages.success(request, 'Registration almost done, please check your email to verify your account.')
-            return redirect('login')
+            return redirect('landing')
             
             # except Exception as e:
             #     # to clean up the user from db since verification cant ber sent
