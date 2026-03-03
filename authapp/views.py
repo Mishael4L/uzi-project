@@ -26,7 +26,7 @@ def register_user(request):
         if form.is_valid():
             # creating user without activating yet
             user = form.save(commit=False)
-            user.is_active = False
+            user.is_active = True
             user.save()
             
             # generating verification code
