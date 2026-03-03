@@ -29,45 +29,45 @@ def register_user(request):
             user.is_active = True
             user.save()
             
-            # generating verification code
-            uid = urlsafe_base64_encode(force_bytes(user.pk))
-            token = default_token_generator.make_token(user)
+            # # generating verification code
+            # uid = urlsafe_base64_encode(force_bytes(user.pk))
+            # token = default_token_generator.make_token(user)
 
-            # building verication url(more robust than string formatting)
-            current_site = get_current_site(request)
-            protocol = 'https' if request.is_secure() else 'http'
-            verification_path = reverse('activate_user', kwargs={'uidb64': uid, 'token': token})
-            verification_link = f'{protocol}://{current_site.domain}{verification_path}'
+            # # building verication url(more robust than string formatting)
+            # current_site = get_current_site(request)
+            # protocol = 'https' if request.is_secure() else 'http'
+            # verification_path = reverse('activate_user', kwargs={'uidb64': uid, 'token': token})
+            # verification_link = f'{protocol}://{current_site.domain}{verification_path}'
 
-            # sending my verifcation mail
-            base = Base.objects.first()
-            subject = 'Welcome! Please, verify your email'
-            message = render_to_string('pages/auth/email_verification.html', {
-                'user': user, 
-                'verification_link' : verification_link,
-                'site_name' : current_site.name,
-                'company_name' : base.company_name,
-            })
+            # # sending my verifcation mail
+            # base = Base.objects.first()
+            # subject = 'Welcome! Please, verify your email'
+            # message = render_to_string('pages/auth/email_verification.html', {
+            #     'user': user, 
+            #     'verification_link' : verification_link,
+            #     'site_name' : current_site.name,
+            #     'company_name' : base.company_name,
+            # })
             
-            try:
-                email = EmailMessage(
-                    subject=subject,
-                    body=message,
-                    from_email=settings.EMAIL_HOST_USER,
-                    to=[user.email]
-                )
+            # try:
+            #     email = EmailMessage(
+            #         subject=subject,
+            #         body=message,
+            #         from_email=settings.EMAIL_HOST_USER,
+            #         to=[user.email]
+            #     )
 
-                email.content_subtype = 'html'
-                email.send(fail_silently=False)
+            #     email.content_subtype = 'html'
+            #     email.send(fail_silently=False)
 
-                messages.success(request, 'Registration almost done, please check your email to verify your account.')
-                return redirect('login')
+            messages.success(request, 'Registration almost done, please check your email to verify your account.')
+            return redirect('login')
             
-            except Exception as e:
-                # to clean up the user from db since verification cant ber sent
-                user.delete()  
-                messages.error(request, 'Error sending verification email. Please try again')
-                print(f'Email error : {e}')
+            # except Exception as e:
+            #     # to clean up the user from db since verification cant ber sent
+            #     user.delete()  
+            #     messages.error(request, 'Error sending verification email. Please try again')
+            #     print(f'Email error : {e}')
         else:
             messages.error(request, 'Please correct the errors below.')
     else: 
