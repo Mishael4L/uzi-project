@@ -156,8 +156,8 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
-WHITENOISE_MANIFEST_STRICT = False
-WHITENOISE_KEEP_ONLY_HASHED_FILES = False
+# WHITENOISE_MANIFEST_STRICT = False
+# WHITENOISE_KEEP_ONLY_HASHED_FILES = False
 
 if ENVIRONMENT == 'production':
     DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
