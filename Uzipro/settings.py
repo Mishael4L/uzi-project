@@ -154,10 +154,15 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 # MEDIA_URL = '/media/'
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
-
 # WHITENOISE_MANIFEST_STRICT = False
 # WHITENOISE_KEEP_ONLY_HASHED_FILES = False
+
+if ENVIRONMENT == 'production':
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+    WHITENOISE_MANIFEST_STRICT = False
+else:
+    STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
+
 
 if ENVIRONMENT == 'production':
     DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
