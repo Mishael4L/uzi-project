@@ -158,7 +158,7 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 # WHITENOISE_KEEP_ONLY_HASHED_FILES = False
 
 if ENVIRONMENT == 'production':
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
     WHITENOISE_MANIFEST_STRICT = False
 else:
     STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
