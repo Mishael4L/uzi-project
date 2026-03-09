@@ -162,7 +162,9 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
 # WHITENOISE_KEEP_ONLY_HASHED_FILES = False
 
 # if ENVIRONMENT == 'production':
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
+WHITENOISE_USE_FINDERS = True
+WHITENOISE_AUTOREFRESH = True
 #     WHITENOISE_MANIFEST_STRICT = False
 # else:
 # STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
